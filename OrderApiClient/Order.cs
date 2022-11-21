@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace DataAccessLayer;
+namespace OrderApiClient;
 
 public class Order
 {
@@ -12,6 +12,7 @@ public class Order
 
     public Order(){}
     public Order(int orderNumber) => OrderNumber = orderNumber;
+    public override string ToString() => $"Order #{OrderNumber}, status: {State}";
 
 
     [JsonConverter(typeof(JsonStringEnumConverter))]

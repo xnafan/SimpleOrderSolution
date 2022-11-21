@@ -18,9 +18,9 @@ public class OrdersController : ControllerBase, IOrderProvider
 
     [HttpPut]
     [Route("{orderNumber}")]
-    public bool UpdateOrder(int orderNumber, Order.OrderState newState) => _orderProvider.UpdateOrder(orderNumber, newState);
+    public bool UpdateOrder(int orderNumber,[FromBody] Order.OrderState newState) => _orderProvider.UpdateOrder(orderNumber, newState);
     
     [HttpGet]
-    [Route("{state}")]
+    [Route("{orderState}")]
     public IEnumerable<Order> GetSpecificOrders(Order.OrderState state) => _orderProvider.GetSpecificOrders(state);
 }

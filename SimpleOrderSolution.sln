@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleOrderWebApi", "Simple
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{1DFABFD4-9484-4466-92FD-F1B855759759}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderApiClient", "OrderApiClient\OrderApiClient.csproj", "{4AD54982-43AC-4682-B563-31A5CE5F72FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsOrderUI", "WindowsOrderUI\WindowsOrderUI.csproj", "{78BEF144-781B-4C9A-96B4-44F1CB85F30C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{1DFABFD4-9484-4466-92FD-F1B855759759}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1DFABFD4-9484-4466-92FD-F1B855759759}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1DFABFD4-9484-4466-92FD-F1B855759759}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4AD54982-43AC-4682-B563-31A5CE5F72FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AD54982-43AC-4682-B563-31A5CE5F72FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AD54982-43AC-4682-B563-31A5CE5F72FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AD54982-43AC-4682-B563-31A5CE5F72FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78BEF144-781B-4C9A-96B4-44F1CB85F30C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78BEF144-781B-4C9A-96B4-44F1CB85F30C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78BEF144-781B-4C9A-96B4-44F1CB85F30C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78BEF144-781B-4C9A-96B4-44F1CB85F30C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
