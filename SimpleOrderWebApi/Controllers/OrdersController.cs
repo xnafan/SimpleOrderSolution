@@ -1,17 +1,24 @@
 ﻿using DataAccessLayer;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 
 namespace SimpleOrderWebApi.Controllers;
 [Route("api/[controller]")]
 [ApiController]
-public class OrdersController : ControllerBase, IOrderProvider
+public class OrdersController : ControllerBase
 {
     IOrderProvider _orderProvider;
-    public OrdersController(IOrderProvider provider) => _orderProvider = provider;
+    IHubContext<OrderHub> _orderHubContext;
+    public OrdersController(IOrderProvider provider, IHubContext<OrderHub> orderHubContext) => _orderProvider = provider;
 
     [HttpPost]
     [Route("create")]
-    public Order CreateOrder() => _orderProvider.CreateOrder();
+    public async Task<Order> CreateOrder()
+    {
+        var createdOrder = _orderProvider.CreateOrder();
+        await _orderHubContext.Clients.All.SendCoreAsync("receiveOrders", _orderProvider.GetUnfinishedOrders().ToArray());
+        return createdOrder;
+    }
 
     [HttpGet]
     public IEnumerable<Order> GetUnfinishedOrders() => _orderProvider.GetUnfinishedOrders();
