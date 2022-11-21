@@ -1,12 +1,10 @@
 ﻿using DataAccessLayer;
 using Microsoft.AspNetCore.Mvc;
-using SimpleOrderWebApi.Dtos;
-using SimpleOrderWebApi.Tools;
 
 namespace SimpleOrderWebApi.Controllers;
 [Route("api/[controller]")]
 [ApiController]
-public class OrdersController : ControllerBase
+public class OrdersController : ControllerBase, IOrderProvider
 {
     IOrderProvider _orderProvider;
     public OrdersController(IOrderProvider provider) => _orderProvider = provider;
@@ -16,13 +14,13 @@ public class OrdersController : ControllerBase
     public Order CreateOrder() => _orderProvider.CreateOrder();
 
     [HttpGet]
-    public IEnumerable<OrderDto> GetUnfinishedOrders() => _orderProvider.GetUnfinishedOrders().ToDtos();
+    public IEnumerable<Order> GetUnfinishedOrders() => _orderProvider.GetUnfinishedOrders();
 
     [HttpPut]
     [Route("{orderNumber}")]
-    public bool UpdateOrder(int orderNumber, string newState) => _orderProvider.UpdateOrder(orderNumber, Enum.Parse<Order.OrderState>(newState));
+    public bool UpdateOrder(int orderNumber, Order.OrderState newState) => _orderProvider.UpdateOrder(orderNumber, newState);
     
     [HttpGet]
     [Route("{state}")]
-    public IEnumerable<OrderDto> GetSpecificOrders(string state) => _orderProvider.GetSpecificOrders(Enum.Parse<Order.OrderState>(state)).ToDtos();
+    public IEnumerable<Order> GetSpecificOrders(Order.OrderState state) => _orderProvider.GetSpecificOrders(state);
 }
