@@ -5,16 +5,29 @@ var connection = new signalR.HubConnectionBuilder().withUrl("/OrdersNotifier").b
 //updates UI after votes from any client
 connection.on("receiveOrders", updateOrders);
 
+let beingPreparedCell = document.querySelector("td.being-prepared");
+let readyForPickupCell = document.querySelector("td.ready-for-pickup");
+
 //retrieve current poll status from server when connection is up
 connection.start().then(function () {
-    updateOrders();
+    askForOrders();
 }).catch(function (err) {
     return console.error(err.toString());
 });
 
+function askForOrders() {
+    connection.invoke("GetUnfinishedOrders").catch(function (err) {
+        console.error("Error asking for unfinished orders: " + err.toString());
+    });
+}
+
 
 function updateOrders(orders) {
-    alert("orders updated");
+    beingPreparedCell.innerHtml = readyForPickupCell.innerHtml = "";
+    for (let i = 0; i < orders.length; i++) {
+        let currentOrder = orders[i];
+        addOrder(currentOrder.state == "BeingPrepared" ? beingPreparedCell : readyForPickupCell, currentOrder);
+    }
 }
 
 function pulseElement(element) {
@@ -22,4 +35,11 @@ function pulseElement(element) {
     element.style.animation = '';
     void element.offsetWidth;       //important HACK to make the restart of animation work
     element.style.animation = "pulse .2s 1";
+}
+
+function addOrder(cell, order) {
+    let newOrderDiv = document.createElement("div");
+    newOrderDiv.innerText = order.orderNumber;
+    newOrderDiv.className = "order";
+    cell.appendChild(newOrderDiv);
 }

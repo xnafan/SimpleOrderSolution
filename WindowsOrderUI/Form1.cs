@@ -33,10 +33,7 @@ public partial class Form1 : Form
             btnSetOrderPickedUp.Enabled = btnSetOrderReady.Enabled = lstOrders.SelectedIndex > -1;
     }
 
-    private void lstOrders_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        RefreshUi();
-    }
+    private void LstOrders_SelectedIndexChanged(object sender, EventArgs e) => RefreshUi();
 
     private void btnSetOrderReady_Click(object sender, EventArgs e)
     {

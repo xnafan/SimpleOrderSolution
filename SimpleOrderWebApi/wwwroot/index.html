@@ -2,9 +2,43 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title></title>
+    <title>Order status page</title>
+    <style>
+        * {
+            font-family: 'Gill Sans', sans-serif;
+        }
+
+        body {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .header {
+            font-size: 60pt;
+            text-align: center;
+            height:150px;
+            background-color:navy;
+            color:white;
+        }
+        td {
+            text-align: center;
+        }
+        .container {width:100%;
+                    
+        }
+        tr.sub-header td { font-size:24pt;background-color:#adf;}
+        table {border-collapse:collapse;}
+        div.order { font-size:25pt; border:2px solid black;
+        }
+        
+    </style>
 </head>
 <body>
+    <table class="container">
+        <tr><td colspan="2" class="header">ORDER STATUS</td></tr>
+        <tr class="sub-header"><td>BEING PREPARED</td><td>READY FOR PICKUP</td></tr>
+        <tr><td class="being-prepared"></td><td class="ready-for-pickup"></td></tr>
+    </table>
     <script src="js/signalr.js"></script>
     <script src="js/orders.js"></script>
 </body>

@@ -20,18 +20,28 @@ public class OrdersController : ControllerBase
     public async Task<Order> CreateOrder()
     {
         var createdOrder = _orderProvider.CreateOrder();
-        await _orderHubContext.Clients.All.SendCoreAsync("receiveOrders", _orderProvider.GetUnfinishedOrders().ToArray());
+        await SignalChangeToHubAsync();
         return createdOrder;
     }
+
 
     [HttpGet]
     public IEnumerable<Order> GetUnfinishedOrders() => _orderProvider.GetUnfinishedOrders();
 
     [HttpPut]
     [Route("{orderNumber}")]
-    public bool UpdateOrder(int orderNumber,[FromBody] Order.OrderState newState) => _orderProvider.UpdateOrder(orderNumber, newState);
-    
+    public async Task<bool> UpdateOrder(int orderNumber, [FromBody] Order.OrderState newState)
+    {
+        var updatedOrder = _orderProvider.UpdateOrder(orderNumber, newState);
+        await SignalChangeToHubAsync();
+        return updatedOrder;
+    }
+
     [HttpGet]
     [Route("{orderState}")]
     public IEnumerable<Order> GetSpecificOrders(Order.OrderState state) => _orderProvider.GetSpecificOrders(state);
+    private async Task SignalChangeToHubAsync()
+    {
+        await _orderHubContext.Clients.All.SendCoreAsync("receiveOrders", _orderProvider.GetUnfinishedOrders().ToArray());
+    }
 }

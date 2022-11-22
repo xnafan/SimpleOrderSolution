@@ -102,7 +102,7 @@ partial class Form1
             this.lstOrders.Name = "lstOrders";
             this.lstOrders.Size = new System.Drawing.Size(1249, 1035);
             this.lstOrders.TabIndex = 0;
-            this.lstOrders.SelectedIndexChanged += new System.EventHandler(this.lstOrders_SelectedIndexChanged);
+            this.lstOrders.SelectedIndexChanged += new System.EventHandler(this.LstOrders_SelectedIndexChanged);
             // 
             // Form1
             // 
