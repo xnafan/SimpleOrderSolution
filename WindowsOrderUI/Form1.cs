@@ -23,8 +23,11 @@ public partial class Form1 : Form
 
     private void RefreshOrdersList()
     {
+        var selectedIndex = lstOrders.SelectedIndex;
         lstOrders.Items.Clear();
         _restClient.GetUnfinishedOrders()?.ToList().ForEach(order => lstOrders.Items.Add(order));
+        if(selectedIndex > lstOrders.Items.Count -1) { selectedIndex = lstOrders.Items.Count - 1; }
+        lstOrders.SelectedIndex = selectedIndex;
         RefreshUi();
     }
 
@@ -45,7 +48,6 @@ public partial class Form1 : Form
         var selectedOrder = (Order)lstOrders.SelectedItem;
         _restClient.UpdateOrder(selectedOrder.OrderNumber, newState);
         RefreshOrdersList();
-        lstOrders.SelectedItem = FindOrderInListByOrderNumber(selectedOrder.OrderNumber);
     }
 
     private Order? FindOrderInListByOrderNumber(int orderNumber)
