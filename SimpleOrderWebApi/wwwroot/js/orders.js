@@ -21,15 +21,23 @@ function askForOrders() {
     });
 }
 
-
 function updateOrders(orders) {
-    beingPreparedCell.innerHtml = readyForPickupCell.innerHtml = "";
+    if (!Array.isArray(orders)) alert("not an array:" + orders);
+    clearBothOrderCells();
     for (let i = 0; i < orders.length; i++) {
         let currentOrder = orders[i];
         addOrder(currentOrder.state == "BeingPrepared" ? beingPreparedCell : readyForPickupCell, currentOrder);
     }
 }
 
+function clearBothOrderCells() {
+    while (beingPreparedCell.firstChild) {
+        beingPreparedCell.removeChild(beingPreparedCell.firstChild);
+    }
+    while (readyForPickupCell.firstChild) {
+        readyForPickupCell.removeChild(readyForPickupCell.firstChild);
+    }
+}
 function pulseElement(element) {
 
     element.style.animation = '';

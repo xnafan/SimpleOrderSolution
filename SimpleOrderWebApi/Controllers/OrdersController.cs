@@ -42,6 +42,6 @@ public class OrdersController : ControllerBase
     public IEnumerable<Order> GetSpecificOrders(Order.OrderState state) => _orderProvider.GetSpecificOrders(state);
     private async Task SignalChangeToHubAsync()
     {
-        await _orderHubContext.Clients.All.SendCoreAsync("receiveOrders", _orderProvider.GetUnfinishedOrders().ToArray());
+        await _orderHubContext.Clients.All.SendAsync("receiveOrders", _orderProvider.GetUnfinishedOrders().ToArray());
     }
 }

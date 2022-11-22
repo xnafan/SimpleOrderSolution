@@ -3,7 +3,7 @@ public class InMemoryOrderProvider : IOrderProvider
 {
     private int _nextOrderId = 1;
     private List<Order> _orders = new() { 
-        new Order() { OrderNumber=232, State=Order.OrderState.BeingPrepared} ,
+        //new Order() { OrderNumber=232, State=Order.OrderState.BeingPrepared} ,
         //new Order() { OrderNumber=432, State=Order.OrderState.ReadyForPickup},
         //new Order() { OrderNumber=88, State=Order.OrderState.BeingPrepared}
     };
