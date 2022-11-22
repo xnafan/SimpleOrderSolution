@@ -30,7 +30,7 @@ public class OrdersController : ControllerBase
 
     [HttpPut]
     [Route("{orderNumber}")]
-    public async Task<bool> UpdateOrder(int orderNumber, [FromBody] Order.OrderState newState)
+    public async Task<bool> UpdateOrder(int orderNumber, Order.OrderState newState)
     {
         var updatedOrder = _orderProvider.UpdateOrder(orderNumber, newState);
         await SignalChangeToHubAsync();

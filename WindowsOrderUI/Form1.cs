@@ -4,7 +4,8 @@ namespace WindowsOrderUI;
 
 public partial class Form1 : Form
 {
-    OrderApiRestClient _restClient = new OrderApiRestClient("https://localhost:7071/api/orders");
+    //OrderApiRestClient _restClient = new OrderApiRestClient("https://localhost:7071/api/orders");
+    OrderApiRestClient _restClient = new OrderApiRestClient("https://orders.codesamples.dk/api/orders");
     public Form1()
     {
         InitializeComponent();

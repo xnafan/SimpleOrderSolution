@@ -11,7 +11,7 @@ public class OrderApiRestClient
     public bool UpdateOrder(int orderNumber, Order.OrderState newState)
     {
         var restRequest = new RestRequest($"{orderNumber}");
-        restRequest.AddBody(newState);
+        restRequest.AddQueryParameter("newState", newState.ToString());
         return _client.Put<bool>( restRequest);
     }
     public IEnumerable<Order>? GetUnfinishedOrders() => _client.Get<IEnumerable<Order>>(new RestRequest());
