@@ -9,7 +9,11 @@ public class OrdersController : ControllerBase
 {
     IOrderProvider _orderProvider;
     IHubContext<OrderHub> _orderHubContext;
-    public OrdersController(IOrderProvider provider, IHubContext<OrderHub> orderHubContext) => _orderProvider = provider;
+    public OrdersController(IOrderProvider provider, IHubContext<OrderHub> orderHubContext)
+    {
+        _orderProvider = provider;
+        _orderHubContext = orderHubContext;
+    }
 
     [HttpPost]
     [Route("create")]
