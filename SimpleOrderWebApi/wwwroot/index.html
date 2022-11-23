@@ -16,31 +16,29 @@
         .header {
             font-size: 60pt;
             text-align: center;
-            height:150px;
+            height:120px;
             background-color:navy;
             color:white;
         }
-        td {
-            text-align: center;
+        td {text-align: center;}
+        html, body {
+        height:100%;} .container {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
         }
-        .container {width:100%;
-                    
-        }
-        tr.sub-header td { font-size:24pt;background-color:#adf;}
-        tr.orders td {
-            width:50%;
-        }
+        tr.sub-header td { font-size:24pt;background-color:#adf;height:60px;}
+        tr.orders td {width:50%; vertical-align:top;}
         table {border-collapse:collapse;}
         div.order { font-size:32pt; font-weight:bold;border:2px solid black; width:15%; margin:10px;float:left;
         }
-        
     </style>
 </head>
 <body>
     <table class="container">
         <tr><td colspan="2" class="header">ORDER STATUS</td></tr>
-        <tr class="sub-header"><td>BEING PREPARED</td><td>READY FOR PICKUP</td></tr>
-        <tr class="orders"><td class="being-prepared"></td><td class="ready-for-pickup"></td></tr>
+        <tr class="sub-header"><td style="border-right:3px solid navy;">BEING PREPARED</td><td>READY FOR PICKUP</td></tr>
+        <tr class="orders"><td class="being-prepared" style="border-right:3px solid navy;">&nbsp;</td><td class="ready-for-pickup"></td></tr>
     </table>
     <script src="js/signalr.js"></script>
     <script src="js/orders.js"></script>
