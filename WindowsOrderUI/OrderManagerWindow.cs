@@ -57,7 +57,12 @@ public partial class OrderManagerWindow : Form
         RefreshUi();
     }
 
-    private void RefreshUi() => btnSetOrderPickedUp.Enabled = btnSetOrderReady.Enabled = lstOrders.SelectedIndex > -1;
+    private void RefreshUi()
+    {
+        btnSetOrderPickedUp.Enabled = btnSetOrderReady.Enabled = lstOrders.SelectedIndex > -1;
+        btnSetOrderPickedUp.BackColor = btnSetOrderReady.BackColor= lstOrders.SelectedIndex > -1 ? SystemColors.Control : Color.White;
+        btnSetOrderPickedUp.Refresh();
+    }
 
     private void ChangeSelectedOrderState(Order.OrderState newState)
     {
