@@ -5,8 +5,8 @@ namespace WindowsOrderUI;
 
 public partial class OrderManagerWindow : Form
 {
-    //OrderApiRestClient _restClient = new OrderApiRestClient("https://localhost:7071/api/orders");
-    OrderApiRestClient _restClient = new OrderApiRestClient("https://orders.codesamples.dk/api/orders");
+    OrderApiRestClient _restClient = new OrderApiRestClient("https://localhost:7071/api/orders");
+    //OrderApiRestClient _restClient = new OrderApiRestClient("https://orders.codesamples.dk/api/orders");
     public OrderManagerWindow() => InitializeComponent();
 
     private void Form1_Load(object sender, EventArgs e)

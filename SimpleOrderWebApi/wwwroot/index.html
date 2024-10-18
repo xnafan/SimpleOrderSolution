@@ -4,13 +4,17 @@
     <meta charset="utf-8" />
     <title>Order status page</title>
     <style>
-        * {
-            font-family: 'Gill Sans', sans-serif;
-        }
+        * {font-family: 'Gill Sans', sans-serif;}
 
         body {
             margin: 0px;
             padding: 0px;
+        }
+        
+        @keyframes pulse {
+            0% {color: white;}
+            50% {color: cornflowerblue;}
+            100% {color: white;}
         }
 
         .header {
@@ -36,7 +40,7 @@
 </head>
 <body>
     <table class="container">
-        <tr><td colspan="2" class="header">ORDER STATUS</td></tr>
+        <tr><td colspan="2" class="header"><span id="headerText">ORDER STATUS</span></td></tr>
         <tr class="sub-header"><td style="border-right:3px solid navy;">BEING PREPARED</td><td>READY FOR PICKUP</td></tr>
         <tr class="orders"><td class="being-prepared" style="border-right:3px solid navy;">&nbsp;</td><td class="ready-for-pickup"></td></tr>
     </table>

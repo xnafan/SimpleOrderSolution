@@ -7,10 +7,10 @@ public class OrderApiRestClient
 
     public OrderApiRestClient(string baseUrl) => _client = new RestClient(baseUrl);
 
-    public Order CreateOrder() { return _client.Post<Order>(new RestRequest("create")); }
+    public Order CreateOrder() { return _client.Post<Order>(new RestRequest()); }
     public bool UpdateOrder(int orderNumber, Order.OrderState newState)
     {
-        var restRequest = new RestRequest($"{orderNumber}");
+        var restRequest = new RestRequest($"{orderNumber}/state");
         restRequest.AddQueryParameter("newState", newState.ToString());
         return _client.Put<bool>( restRequest);
     }

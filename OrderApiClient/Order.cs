@@ -7,7 +7,6 @@ public class Order
     public int OrderNumber { get; set; }
     public DateTime OrderPlacedTimestamp { get; set; } = DateTime.Now;
     
-    
     public OrderState State { get; set; }
 
     public Order(){}

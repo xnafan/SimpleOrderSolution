@@ -7,6 +7,7 @@ connection.on("receiveOrders", updateOrders);
 
 let beingPreparedCell = document.querySelector("td.being-prepared");
 let readyForPickupCell = document.querySelector("td.ready-for-pickup");
+let headerText = document.querySelector("#headerText");
 
 //retrieve current poll status from server when connection is up
 connection.start().then(function () {
@@ -22,6 +23,7 @@ function askForOrders() {
 }
 
 function updateOrders(orders) {
+    pulseElement(headerText);
     if (!Array.isArray(orders)) alert("not an array:" + orders);
     clearBothOrderCells();
     for (let i = 0; i < orders.length; i++) {
